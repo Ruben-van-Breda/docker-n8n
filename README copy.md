@@ -1,1 +1,0 @@
-docker run --rm n8n-python python3 --version && docker run --rm n8n-python pipx --version
