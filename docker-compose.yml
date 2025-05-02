@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  n8n:
+    image: n8n-python
+    restart: always
+    ports:
+      - "5678:5678"
+    environment:
+      - N8N_PORT=5678
+      - N8N_PROTOCOL=http
+      - N8N_HOST=localhost
+      - NODE_ENV=production
+      - WEBHOOK_URL=http://localhost:5678/
+    volumes:
+      - n8n_data:/home/node/.n8n
+      - ./custom:/home/node/custom
+    networks:
+      - n8n_network
+
+volumes:
+  n8n_data:
+    name: n8n_data
+
+networks:
+  n8n_network:
+    name: n8n_network 
